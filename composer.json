@@ -1,0 +1,12 @@
+{
+    "require": {
+        "illuminate/database": "^11.42"
+    },
+   "autoload": {
+        "psr-4": {
+            "Formacom\\": "app/",
+            "Formacom\\Core\\": "core/"
+        }
+    }
+
+}
