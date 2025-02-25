@@ -29,6 +29,7 @@ class SessionMiddleware {
 
         // Comprueba la existencia de una variable de sesión (por ejemplo, 'user_id').
         if (!isset($_SESSION['user_id'])) {
+       
             header("Location: ".base_url()."");
             exit();
         }

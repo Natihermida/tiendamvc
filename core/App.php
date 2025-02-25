@@ -27,6 +27,7 @@ class App{ //enrutador de la aplicacion
            $this->params = $url ? array_values($url) : [];
            //Lo ejecutamos despues del midelware
            //call_user_func_array([$this->controller, $this->method], $this->params);
+      
     }
      /**
      * Permite agregar middlewares a la aplicación.

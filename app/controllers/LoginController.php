@@ -1,5 +1,4 @@
 <?php
-
 namespace Formacom\controllers;
 
 use Formacom\Core\Controller;
@@ -38,16 +37,4 @@ class LoginController extends Controller
         $this->view("register");
     }
 
-    public function json()
-    {
-        $actores = Actor::where("first_name", "like", "P%")->get();
-        $datos = [
-            "mensaje" => "Listado actores empiezan P",
-            "listado" => $actores
-        ];
-        $json = json_encode($datos);
-        header('Content-Type: application/json');
-        echo $json;
-        exit();
-    }
 }
