@@ -11,6 +11,14 @@
 
 <body>
   <div class="container">
+    <nav class="navbar bg-body-tertiary">
+      <div class="contairner-fluid">
+        <span class="navbar-text">Listado clientes
+
+        </span>
+        <a href="<?=base_url()?>customer/create" class ="btn btn-primary">Nuevo Cliente</a>
+      </div>
+    </nav>
     <table class="table">
       <thead>
         <tr>
@@ -29,7 +37,7 @@
             <td><?= $customer->name ?></td>
             <td> <i class="fa-solid fa-user-pen"></i>
               <i class="fa-solid fa-trash"></i>
-             <a href="<?=base_url()?>customer/show/<?= $customer->customer_id ?></th>>"><i class="fa-solid fa-eye"></i></a>
+             <a href="<?=base_url()?>customer/show/<?= $customer->customer_id ?>"><i class="fa-solid fa-eye"></i></a>
             </td>
           </tr>
 
