@@ -10,5 +10,6 @@ class AdminController extends Controller{
         echo "Hola desde New de HomeController";
     }
     
+    
 }
 ?>
