@@ -27,35 +27,52 @@
                 </div>
                 <div class="form-group col-12">
                     <label for="street">Description</label>
-                    <input type="text" class="form-control" id="description" placeholder="Product Description">
+                    <input required type="text" class="form-control" id="description" placeholder="Product Description">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputAddress">Category</label>
-                <select  id="category">
+                <select required id="category">
 
                 </select>
             </div>
             <div class="form-group">
                 <label for="">Provider</label>
-                <select  id="provider">
+                <select required id="provider">
                     
                 </select>
             </div>
             <div class="row">
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="stock">Stock</label>
-                    <input  type="number" min="0"  class="form-control" id="stock" placeholder="Stock">
+                    <input required type="number" min="0"  class="form-control" id="stock" placeholder="Stock">
                 </div>
                 <div class="form-group col-md-6 col-sm-12">
                     <label for="price">Price</label>
-                    <input  type="number" min="0"  class="form-control" id="price" placeholder="Price">
+                    <input requied type="number" min="0"  class="form-control" id="price" placeholder="Price">
                 </div>
             </div>
             
 
-            <button type="submit" class="btn col-12 btn-primary">Save</button>
+            <button type="submit" class="btn col-12 btn-primary">Save Product</button>
         </form>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Provider</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Price</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="products">
+
+            </tbody>
     </div>
 </body>
 

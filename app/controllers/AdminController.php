@@ -11,5 +11,5 @@ class AdminController extends Controller{
     }
     
     
-}
+}//menu de administrador
 ?>
