@@ -11,12 +11,7 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Add New Provider</h1>
         
-        <?php if (!empty($_SESSION['error'])): ?>
-            <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
-            <?php unset($_SESSION['error']); ?>
-        <?php endif; ?>
-
-        <form action="<?= base_url() ?>provider/create" method="POST">
+             <form action="<?= base_url() ?>provider/create" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Provider Name</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -29,9 +24,18 @@
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" id="address"  required>
             </div>
+            
+            <div class="mb-3">
+                <label for="address" class="form-label">City</label>
+                <input type="text" class="form-control" id="city"  required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country"  required>
+            </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="address"  required>
+                <input type="text" class="form-control" id="phone"  required>
             </div>
             <button type="submit" class="btn btn-primary">Save Provider</button>
             <a href="<?= base_url() ?>provider" class="btn btn-secondary">Cancel</a>

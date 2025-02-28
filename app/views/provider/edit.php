@@ -16,31 +16,35 @@
             <input type="hidden" name="id" value="<?= $data->provider_id ?>">
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nombre</label>
+                <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?= htmlspecialchars($data->name) ?>" required>
             </div>
 
             <h5 class="mt-4">Dirección</h5>
             <div class="mb-3">
-                <label for="street" class="form-label">Calle</label>
+                <label for="street" class="form-label">Street</label>
                 <input type="text" class="form-control" id="street" name="street" value="<?= isset($data->addresses[0]) ? htmlspecialchars($data->addresses[0]->street) : '' ?>">
             </div>
             <div class="mb-3">
-                <label for="zip_code" class="form-label">Código Postal</label>
+                <label for="zip_code" class="form-label">Zip Code</label>
                 <input type="text" class="form-control" id="zip_code" name="zip_code" value="<?= isset($data->addresses[0]) ? htmlspecialchars($data->addresses[0]->zip_code) : '' ?>">
             </div>
             <div class="mb-3">
-                <label for="city" class="form-label">Ciudad</label>
+                <label for="city" class="form-label">City</label>
                 <input type="text" class="form-control" id="city" name="city" value="<?= isset($data->addresses[0]) ? htmlspecialchars($data->addresses[0]->city) : '' ?>">
             </div>
             <div class="mb-3">
-                <label for="country" class="form-label">País</label>
+                <label for="country" class="form-label">Country</label>
                 <input type="text" class="form-control" id="country" name="country" value="<?= isset($data->addresses[0]) ? htmlspecialchars($data->addresses[0]->country) : '' ?>">
             </div>
 
             <h5 class="mt-4">Teléfono</h5>
             <div class="mb-3">
-                <label for="phone" class="form-label">Número de Teléfono</label>
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="<?= isset($data->phones[0]) ? htmlspecialchars($data->phones[0]->number) : '' ?>">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">web</label>
                 <input type="text" class="form-control" id="phone" name="phone" value="<?= isset($data->phones[0]) ? htmlspecialchars($data->phones[0]->number) : '' ?>">
             </div>
 
