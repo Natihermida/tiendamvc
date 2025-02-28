@@ -10,6 +10,9 @@ class Provider extends Model{
     public function phones(){
         return $this->hasMany(Phone::class,"provider_id");
     }
+    public function products(){
+        return $this->hasMany(Product::class,"provider_id");
+    }
 }
 
 ?>

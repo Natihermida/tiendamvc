@@ -29,17 +29,10 @@ class ProviderController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = trim($_POST['name']);
-
-            // Validación básica
-            if (empty($name)) {
-                $_SESSION['error'] = "El nombre es obligatorio.";
-                header("Location: " . base_url() . "provider/new");
-                exit();
-            }
-
-            // Crear el nuevo proveedor
+        // Crear el nuevo proveedor
             $provider = new Provider();
             $provider->name = $name;
+            $provider->web= $_POST["web"];
             $provider->save();
 
             // Crear la dirección del proveedor si se proporciona
@@ -62,7 +55,7 @@ class ProviderController extends Controller
             header("Location: " . base_url() . "provider");
             exit();
         }
-        $this->view("provider"); // Carga la vista del formulario
+        $this->view("create"); // Carga la vista del formulario
     }
     public function edit(...$params)
 {
@@ -133,7 +126,13 @@ class ProviderController extends Controller
         if (isset($params[0])) {
             $provider = Provider::find($params[0]);
             if ($provider) {
+                $provider->addresses()->delete();
+              
+                $provider->phones()->delete();
+                $provider->products()->delete();
                 $provider->delete();
+                
+
             }
         }
         header("Location:" . base_url() . "provider");

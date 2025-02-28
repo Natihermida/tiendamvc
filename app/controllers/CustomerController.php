@@ -57,4 +57,64 @@ class CustomerController extends Controller
         }
         $this->view("create"); // Carga la vista del formulario
     }
+
+    // Método para editar un cliente
+    public function edit(...$params)
+    {
+        if (isset($params[0])) {
+            $customer = Customer::find($params[0]);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Actualizar el nombre del cliente
+                $customer->name = trim($_POST['name']);
+                $customer->save();
+
+                // Actualizar la dirección si se ha proporcionado
+                if (isset($_POST["street"])) {
+                    $address = $customer->addresses()->first(); // Obtener la dirección asociada
+                    if ($address) {
+                        $address->street = $_POST["street"];
+                        $address->zip_code = $_POST["zip_code"];
+                        $address->city = $_POST["city"];
+                        $address->country = $_POST["country"];
+                        $address->save();
+                    }
+                }
+
+                // Actualizar el teléfono si se ha proporcionado
+                if (isset($_POST["phone"])) {
+                    $phone = $customer->phones()->first(); // Obtener el teléfono asociado
+                    if ($phone) {
+                        $phone->number = $_POST["phone"];
+                        $phone->save();
+                    }
+                }
+
+                header("Location: " . base_url() . "customer");
+            }
+
+            $this->view("edit", $customer); // Carga la vista de edición con los datos del cliente
+        } else {
+            header("Location:" . base_url() . "customer");
+        }
+    }
+
+    // Método para eliminar un cliente
+    public function delete(...$params)
+    {
+        if (isset($params[0])) {
+            $customer = Customer::find($params[0]);
+
+            if ($customer) {
+                // Eliminar las relaciones asociadas antes de eliminar el cliente
+                $customer->addresses()->delete(); // Eliminar todas las direcciones asociadas
+                $customer->phones()->delete();    // Eliminar todos los teléfonos asociados
+
+                // Eliminar el cliente
+                $customer->delete();
+            }
+        }
+        header("Location:" . base_url() . "customer");
+    }
+
 }

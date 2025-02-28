@@ -11,7 +11,7 @@
 <body class="bg-light">
     <div class="container mt-5">
         <h1 class="text-center mb-4">Providers List</h1>
-        <a href="<?= base_url() ?>provider/new" class="btn btn-primary mb-3">Add New Provider</a>
+        <a href="<?= base_url() ?>provider/create" class="btn btn-primary mb-3">Add New Provider</a>
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
