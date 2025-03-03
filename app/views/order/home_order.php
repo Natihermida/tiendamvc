@@ -17,7 +17,7 @@
 
 
         <!-- Botón para crear nueva orden -->
-        <a href="" class="btn btn-primary mb-3">Crear Nueva Orden</a>
+        <a href="<?=base_url()?>order/create" class="btn btn-primary mb-3">Crear Nueva Orden</a>
 
         <!-- Tabla para listar las órdenes -->
         <table class="table table-bordered">

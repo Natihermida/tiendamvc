@@ -15,6 +15,7 @@
             <a href="<?=base_url()?>product" class="btn btn-primary btn-lg"><i class="fas fa-box"></i> Products</a>
             <a href="<?=base_url()?>customer" class="btn btn-success btn-lg"><i class="fas fa-users"></i> Customers</a>
             <a href="<?=base_url()?>provider" class="btn btn-warning btn-lg"><i class="fas fa-truck"></i> Providers</a>
+            <a href="<?=base_url()?>category" class="btn btn-primary btn-lg"><i class="fas fa-box"></i> Categories</a>
             <a href="<?php echo base_url()?>order" class="btn btn-danger btn-lg"><i class="fas fa-tags"></i> Orders</a>
         </div>
     </div>
