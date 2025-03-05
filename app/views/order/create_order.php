@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-5">
         <h1>Crear Nueva Orden</h1>
-        <form method="POST" action="procesar_orden.php">
+        <form id="order-form" method="POST" action="procesar_orden.php">
             <div class="mb-3">
                 <label for="customer_id" class="form-label">Cliente</label>
                 <select class="form-select" id="customer_id" name="customer_id" required>
@@ -68,11 +68,15 @@
             const total = price * quantity;
             totalSpan.textContent = total.toFixed(2);
 
-            // Evitar que se agregue más cantidad que el stock disponible
-            if (quantity > stock) {
+            // Disminuir el stock en la vista
+            const updatedStock = stock - quantity;
+            if (updatedStock < 0) {
                 alert('No hay suficiente stock para esta cantidad.');
                 quantityInput.value = stock;  // Ajustar la cantidad al stock disponible
                 totalSpan.textContent = (price * stock).toFixed(2);  // Ajustar el total
+            } else {
+                // Actualizar el stock en el 'data-stock' para reflejar la cantidad restante
+                selectedOption.setAttribute('data-stock', updatedStock);
             }
         }
 
@@ -111,3 +115,4 @@
 </body>
 
 </html>
+
