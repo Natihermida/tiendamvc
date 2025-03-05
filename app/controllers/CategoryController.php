@@ -34,18 +34,19 @@ class CategoryController extends Controller
 
             $category = new Category();
             $category->name = $name;
+            $category->description = $_POST['description'] ?? '';
             $category->save();
 
             header("Location: " . base_url() . "category");
             exit();
         }
-        $this->view("category");
+        $this->view("create");
     }
 
     public function edit(...$params)
     {
         if (isset($params[0])) {
-            $category = Category::find($params[0]);
+            $category = Category::find($params[0]); //where para que devuelva una lista de categorías
     
           
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,12 +58,22 @@ class CategoryController extends Controller
             }
     
             //  Verifica que el nombre de la vista sea correcto
-            $this->view("categories/edit", ['category' => $category]);
+            $this->view("edit", ['category' => $category]); // solo pasar el nombre del archivo*
 
 
             return;
         }
     
+        header("Location: " . base_url() . "category");
+    }
+    public function delete(...$params)
+    {
+        if (isset($params[0])) {
+            $category = Category::find($params[0]);
+            if ($category) {
+                $category->delete();
+            }
+        }
         header("Location: " . base_url() . "category");
     }
 }    

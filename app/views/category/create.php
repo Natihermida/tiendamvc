@@ -18,7 +18,7 @@
             <span class="navbar-brand mb-0 h1">Create new category</span>
         </nav>
 
-        <form action="<?php echo base_url(); ?>categories/create" method="POST">
+        <form action="<?php echo base_url(); ?>category/create" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Category name</label>
                 <input type="text" name="name" id="name" class="form-control" required placeholder="Nombre de la categoría">

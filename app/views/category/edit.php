@@ -18,7 +18,7 @@
             <span class="navbar-brand mb-0 h1">Editar Categoría</span>
         </nav>
 
-        <form action="<?php echo base_url(); ?>category/edit/<?php echo $category->category_id; ?>" method="POST">
+        <form action="<?php echo base_url()?>category/edit/<?php echo $category->category_id; ?>" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre de la Categoría</label>
                 <input type="text" name="name" id="name" class="form-control" required value="<?php echo htmlspecialchars($category->name); ?>" placeholder="Nombre de la categoría">
