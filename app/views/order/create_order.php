@@ -15,6 +15,7 @@
             <div class="mb-3">
                 <label for="customer_id" class="form-label">Cliente</label>
                 <select class="form-select" id="customer_id" name="customer_id" required>
+                    <option selected value="">Customer choose</option>
                     <?php foreach ($data["customers"] as $customer) { ?>
                         <option value="<?= $customer->id ?>"><?= $customer->name ?></option>
                     <?php } ?>
@@ -25,7 +26,8 @@
                 <label for="products" class="form-label">Productos</label>
                 <div id="products">
                     <div class="product-item d-flex gap-2">
-                        <select class="form-select" name="products[0][product_id]" required onchange="updateProductInfo(this)">
+                        <select  class="form-select" name="products[0][product_id]" required onchange="updateProductInfo(this)">
+                            <option selected value="">Product choose</option>
                             <?php foreach ($data["products"] as $product) { ?>
                                 <option value="<?= $product->id ?>" data-stock="<?= $product->stock ?>" data-price="<?= $product->price ?>"><?= $product->name ?></option>
                             <?php } ?>
@@ -82,23 +84,18 @@
 
         // Añadir un nuevo producto al formulario
         document.querySelector('.add-product').addEventListener('click', function() {
-            var index = document.querySelectorAll('.product-item').length;
-            var productHtml = `
-                <div class="product-item d-flex gap-2 mt-2">
-                    <select class="form-select" name="products[${index}][product_id]" required onchange="updateProductInfo(this)">
-                        <?php foreach ($data["products"] as $product) { ?>
-                            <option value="<?= $product->id ?>" data-stock="<?= $product->stock ?>" data-price="<?= $product->price ?>"><?= $product->name ?></option>
-                        <?php } ?>
-                    </select>
-                    <input type="number" class="form-control" name="products[${index}][quantity]" placeholder="Cantidad" required onchange="updateProductInfo(this)">
-                    <input type="number" class="form-control" name="products[${index}][price]" placeholder="Precio" required readonly>
-                    <span class="stock-info">Stock: <span class="stock-amount">0</span></span>
-                    <span class="total-price">Total: $<span class="total">0</span></span>
-                    <button type="button" class="btn btn-danger remove-product">Eliminar</button>
-                </div>
-            `;
-            document.querySelector('#products').insertAdjacentHTML('beforeend', productHtml);
+            let newProductRow = document.querySelector('.product-item').cloneNode(true);
+            newProductRow.querySelector('select').selectedIndex = 0;    
+            newProductRow.querySelector('input[name*="quantity"]').value = '';
+            newProductRow.querySelector('input[name*="price"]').value = '';
+            newProductRow.querySelector('.stock-amount').textContent = '0';
+            newProductRow.querySelector('.total').textContent = '0';
+
+            document.querySelector('#products').appendChild(newProductRow);
         });
+
+           
+            
 
         // Eliminar un producto del formulario
         document.querySelector('#products').addEventListener('click', function(event) {

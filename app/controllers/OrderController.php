@@ -61,7 +61,7 @@ class OrderController extends Controller
                     'updated_at' => date('Y-m-d H:i:s')
                 ]);
     
-                header("Location: " . base_url() . "home_order"); // Redirigir al listado de órdenes
+                header("Location: " . base_url() . "order"); // Redirigir al listado de órdenenes (otro controlador)
                 exit();
             } else {
                 // Si no hay suficiente stock

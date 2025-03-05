@@ -15,7 +15,8 @@ class Order extends EloquentModel
     // Relación muchos a muchos con Product a través de la tabla intermedia order_has_product
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'order_has_product', 'order_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'order_has_product', 'order_id', 'product_id')->withTimestamps();
+        
     }
     public function customer(){
         return $this->belongsTo(Customer::class,"customer_id");
