@@ -13,5 +13,7 @@ abstract class Controller
         // Convertimos a minúsculas y removemos la palabra "Controller" para obtener el nombre de la carpeta
         $controllerName = strtolower(str_replace("Controller", "", $className));
         require_once './app/views/'.$controllerName.'/'. $view . '.php';
+        
     }
+   
 }

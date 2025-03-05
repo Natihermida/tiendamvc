@@ -23,7 +23,7 @@ class CategoryController extends Controller
                 exit();
             }
         }
-        header("Location: " . base_url() . "categories");
+        header("Location: " . base_url() . "category");
     }
 
     // Crear una nueva categoría
@@ -36,42 +36,33 @@ class CategoryController extends Controller
             $category->name = $name;
             $category->save();
 
-            header("Location: " . base_url() . "categories");
+            header("Location: " . base_url() . "category");
             exit();
         }
-        $this->view("create");
+        $this->view("category");
     }
 
-    // Editar una categoría existente
     public function edit(...$params)
     {
         if (isset($params[0])) {
             $category = Category::find($params[0]);
+    
+          
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $category->name = $_POST['name'];
+                $category->description = $_POST['description'] ?? ''; // Evitar error si falta
                 $category->save();
-                header("Location: " . base_url() . "categories");
+                header("Location: " . base_url() . "category");
                 exit();
             }
-            $this->view("edit", ['category' => $category]);
-        } else {
-            header("Location: " . base_url() . "categories");
+    
+            //  Verifica que el nombre de la vista sea correcto
+            $this->view("categories/edit", ['category' => $category]);
+
+
+            return;
         }
+    
+        header("Location: " . base_url() . "category");
     }
-
-    // Eliminar una categoría
-    public function delete(...$params)
-    {
-        if (isset($params[0])) {
-            $category = Category::find($params[0]);
-            if ($category) {
-                $category->delete();
-            }
-        }
-        header("Location: " . base_url() . "categories");
-    }
-}
-
-
-
-?>
+}    
